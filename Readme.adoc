@@ -1,0 +1,6 @@
+== Image for Building Documents
+
+* asciidoctor
+* python3
+* cmake
+* ninja
