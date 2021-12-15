@@ -5,6 +5,9 @@ ENV PANDOC_DOWNLOAD_URL https://github.com/jgm/pandoc/archive/$PANDOC_VERSION.ta
 ENV PANDOC_ROOT /usr/local/pandoc
 
 RUN apk add --no-cache \
+    py3-pip \
+    cmake \
+    ninja \
     gmp \
     libffi \
  && apk add --no-cache --virtual build-dependencies \
@@ -25,9 +28,6 @@ RUN apk add --no-cache \
  && rm -Rf pandoc-$PANDOC_VERSION/ \
  && apk del --purge build-dependencies \
  && rm -Rf /root/.cabal/ /root/.ghc/ \
- && cd / && rm -Rf /pandoc-build \
- && apk add py3-pip \
- && apk add cmake \
- && apk add ninja
+ && cd / && rm -Rf /pandoc-build
 
 ENV PATH $PATH:$PANDOC_ROOT/bin
